@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = fm.beginTransaction();
         commodityFragment = CommodityFragment.newInstance("首页");
         transaction.replace(R.id.tb, commodityFragment);
+        getSupportActionBar().show();   //warning
         transaction.commit();
     }
 
@@ -79,18 +81,21 @@ public class MainActivity extends AppCompatActivity
                     commodityFragment = CommodityFragment.newInstance("");
                 }
                 transaction.replace(R.id.tb, commodityFragment);
+                getSupportActionBar().show();   //warning
                 break;
             case 1:
                 if (shoppingFragment == null) {
                     shoppingFragment = ShoppingFragment.newInstance("");
                 }
                 transaction.replace(R.id.tb, shoppingFragment);
+                getSupportActionBar().hide();   //warning
                 break;
             case 2:
                 if (mineFragment == null) {
                     mineFragment = MineFragment.newInstance("");
                 }
                 transaction.replace(R.id.tb, mineFragment);
+                getSupportActionBar().hide();   //warning
                 break;
 
 
