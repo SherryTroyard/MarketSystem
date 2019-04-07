@@ -89,6 +89,12 @@ public class MainActivity extends AppCompatActivity
                 }
                 transaction.replace(R.id.tb, shoppingFragment);
                 getSupportActionBar().hide();   //warning
+//                try {
+//                    getSupportActionBar().getClass().getDeclaredMethod("setShowHideAnimationEnabled", boolean.class).invoke(getSupportActionBar(), false);
+//                }
+//                catch (Exception exception) {
+//                    // The animation will still be displayed if an exception was thrown.
+//                }
                 break;
             case 2:
                 if (mineFragment == null) {
