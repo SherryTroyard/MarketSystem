@@ -5,18 +5,27 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import indi.apst.marketsystem.fragment.CommodityFragment;
+import indi.apst.marketsystem.fragment.FruitFragment;
+import indi.apst.marketsystem.fragment.MeatFragment;
 import indi.apst.marketsystem.fragment.MineFragment;
 import indi.apst.marketsystem.fragment.ShoppingFragment;
+import indi.apst.marketsystem.fragment.VegetableFragment;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationBar.OnTabSelectedListener{
@@ -28,6 +37,10 @@ public class MainActivity extends AppCompatActivity
     private ShoppingFragment shoppingFragment;
     private MineFragment mineFragment;
 
+    private String[] titles;
+    private ListView drawerList;
+    private DrawerLayout drawerLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +49,42 @@ public class MainActivity extends AppCompatActivity
 
         initBottomNavigationBar();
         setDefaultFragment();
+
+        titles = getResources().getStringArray(R.array.titles);
+        drawerList = findViewById(R.id.drawer);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerList.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_activated_1,titles));
+        drawerList.setOnItemClickListener(new DrawerItemClickListerer());
+    }
+
+    private class DrawerItemClickListerer implements ListView.OnItemClickListener{
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+            selectItem(position);
+        }
+    }
+
+    private void selectItem(int position){   //抽屉有问题
+        Fragment fragment;
+        switch (position){
+            case 1:
+                fragment = new MeatFragment();
+                break;
+            case 2:
+                fragment = new VegetableFragment();
+                break;
+            case 3:
+                fragment = new FruitFragment();
+                break;
+            default:
+                fragment = new MeatFragment();
+        }
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame,fragment);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     @Override

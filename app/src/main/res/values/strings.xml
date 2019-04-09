@@ -3,4 +3,14 @@
     <string name="search">搜索</string>
     <string name="sweep">扫一扫</string>
     <string name="developer">开发者信息</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fruit">水果</string>
+    <string name="meat">肉类</string>
+    <string name="vegetable">蔬菜</string>
+    <string-array name="titles">
+        <item>肉类</item>
+        <item>蔬菜</item>
+        <item>水果</item>
+    </string-array>
 </resources>
