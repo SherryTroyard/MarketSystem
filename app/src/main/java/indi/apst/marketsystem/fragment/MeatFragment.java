@@ -43,11 +43,12 @@ public class MeatFragment extends Fragment {
      * @return A new instance of fragment MeatFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MeatFragment newInstance(String param1, String param2) {
+    public static MeatFragment newInstance(String param1) {
         MeatFragment fragment = new MeatFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+        args.putString("agrs1", param1);
         fragment.setArguments(args);
         return fragment;
     }

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CommodityFragment">
 
-    <LinearLayout
+    <GridLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
@@ -14,14 +15,46 @@
         android:paddingTop="16dp"
         android:orientation="vertical">
 
-        <EditText
-            android:layout_width="308dp"
+        <Button
+            android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
-            android:hint="@string/search" />
+            android:text="@string/meat"
+            android:id="@+id/meat_btn"/>
 
-    </LinearLayout>
+        <Button
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:text="@string/vegetable"
+            android:id="@+id/vegetable_btn"/>
+
+        <Button
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="@string/fruit"
+            android:id="@+id/fruit_btn"/>
+
+        <FrameLayout
+            android:id="@+id/ctb"
+            android:layout_width="match_parent"
+            android:layout_height="650dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical">
+
+        </FrameLayout>
+
+
+
+    </GridLayout>
 
 
 
