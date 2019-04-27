@@ -19,3 +19,9 @@ fragment的切换无法实现
 添加搜索活动  
 在研究CardView和ScrollView  
 fragment切换获取id的部分依然有问题  
+
+20190427  
+I did it!————通过嵌套片段实现片段切换  
+（感谢复联4赐我力量x  
+思路清晰之后终于解决了……就这玩意我居然搞了快两星期呜呜呜  
+总结下来就是：fragment和activity写的时候千万不要乱  
