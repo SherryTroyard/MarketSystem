@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -34,11 +35,13 @@ import indi.apst.marketsystem.fragment.ShoppingFragment;
 import indi.apst.marketsystem.fragment.VegetableFragment;
 
 public class MainActivity extends
-        AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener, View.OnClickListener {
+        AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{  //, View.OnClickListener
 
     private BottomNavigationBar bottomNavigationBar;
     private String TAG = MainActivity.class.getSimpleName();
     private TextBadgeItem badgeItem; //添加角标
+    private LinearLayout layout;
+
     private CommodityFragment commodityFragment;
     private ShoppingFragment shoppingFragment;
     private MineFragment mineFragment;
@@ -57,7 +60,6 @@ public class MainActivity extends
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        findById();   //报错
         setDefaultFragment();
         initBottomNavigationBar();
 
@@ -83,39 +85,6 @@ public class MainActivity extends
         }
     }
 
-    private void findById(){
-        meatBtn = this.findViewById(R.id.meat_btn);
-        vegaBtn = this.findViewById(R.id.vegetable_btn);
-        fruitBtn = this.findViewById(R.id.fruit_btn);
-
-        meatBtn.setOnClickListener(this);
-        vegaBtn.setOnClickListener(this);
-        fruitBtn.setOnClickListener(this);
-
-        btnList.add(meatBtn);
-        btnList.add(vegaBtn);
-        btnList.add(fruitBtn);
-    }
-
-    @Override
-    public void onClick(View view){
-        manager = getSupportFragmentManager();
-        transaction = manager.beginTransaction();
-        switch (view.getId()){
-            case R.id.meat_btn:
-                transaction.replace(R.id.tb,new MeatFragment());
-                break;
-            case R.id.vegetable_btn:
-                transaction.replace(R.id.tb,new VegetableFragment());
-                break;
-            case R.id.fruit_btn:
-                transaction.replace(R.id.tb,new FruitFragment());
-                break;
-            default:
-                break;
-        }
-        transaction.commit();
-    }
 
     private void initBottomNavigationBar(){
         bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
@@ -148,33 +117,36 @@ public class MainActivity extends
         FragmentManager fm = this.getSupportFragmentManager();
         //开启事务
         FragmentTransaction transaction = fm.beginTransaction();
+        layout = findViewById(R.id.tb);
         switch (position) {
             case 0:
                 if (commodityFragment == null) {
                     commodityFragment = CommodityFragment.newInstance("");
+//                    layout.setVisibility(View.VISIBLE);
                 }
                 transaction.replace(R.id.tb, commodityFragment);
-                getSupportActionBar().show();   //warning
+//                getSupportActionBar().show();   //warning
                 break;
             case 1:
                 if (shoppingFragment == null) {
                     shoppingFragment = ShoppingFragment.newInstance("");
+//                    layout.setVisibility(View.GONE);
                 }
                 transaction.replace(R.id.tb, shoppingFragment);
-                getSupportActionBar().hide();   //warning
-                try {
-                    getSupportActionBar().getClass().getDeclaredMethod("setShowHideAnimationEnabled", boolean.class).invoke(getSupportActionBar(), false);
-                }
-                catch (Exception exception) {
-                    // The animation will still be displayed if an exception was thrown.
-                }
+//                getSupportActionBar().hide();   //warning
+//                try {
+//                    getSupportActionBar().getClass().getDeclaredMethod("setShowHideAnimationEnabled", boolean.class).invoke(getSupportActionBar(), false);
+//                }
+//                catch (Exception exception) {
+//                    // The animation will still be displayed if an exception was thrown.
+//                }
                 break;
             case 2:
                 if (mineFragment == null) {
                     mineFragment = MineFragment.newInstance("");
                 }
                 transaction.replace(R.id.tb, mineFragment);
-                getSupportActionBar().hide();   //warning
+//                getSupportActionBar().hide();   //warning
                 break;
 
 
