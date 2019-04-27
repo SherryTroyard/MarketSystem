@@ -14,3 +14,8 @@ Bottom Navigation Bar如何切换ActionBar？
 待解决问题：  
 fragment的切换无法实现  
 （我真的要自闭了……
+
+20190422  
+添加搜索活动  
+在研究CardView和ScrollView  
+fragment切换获取id的部分依然有问题  
